@@ -1,18 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CodeMosComponent } from './components/code-mos/code-mos.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CodeMosComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
