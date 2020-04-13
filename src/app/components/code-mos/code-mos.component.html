@@ -1,1 +1,23 @@
-<h1>Welcome to CodeMos</h1>
+<mat-toolbar class="Menu">
+    <span class="nav-items"> CodeMOS </span>
+    <mat-icon class="nav-items" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+
+    <button mat-button [matMenuTriggerFor]="menu" class="nav-items">Menu</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+        <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voicemail</span>
+  </button>
+        <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+    </mat-menu>  
+    <span class="example-fill-remaining-space"></span>
+    <mat-icon class="nav-items" aria-hidden="false">power_settings_new</mat-icon>
+</mat-toolbar>
+<h1> Welcome to CodeMos</h1>
