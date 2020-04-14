@@ -46,11 +46,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CodeMosComponent } from './components/code-mos/code-mos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PostsComponent } from './components/posts/posts.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewpostComponent } from './components/newpost/newpost.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CodeMosComponent
+    CodeMosComponent,
+    PostsComponent,
+    HomeComponent,
+    NewpostComponent,
+    ProfileComponent
   ],
   imports: [
     A11yModule,

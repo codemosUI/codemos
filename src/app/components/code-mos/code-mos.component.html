@@ -1,23 +1,89 @@
 <mat-toolbar class="Menu">
-    <span class="nav-items"> CodeMOS </span>
-    <mat-icon class="nav-items" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+  <span class="nav-items" [routerLink]="['/']"> <img src="/assets/Devshop.gif"> </span>
 
-    <button mat-button [matMenuTriggerFor]="menu" class="nav-items">Menu</button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
-  </button>
-        <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voicemail</span>
-  </button>
-        <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
-  </button>
-    </mat-menu>  
-    <span class="example-fill-remaining-space"></span>
-    <mat-icon class="nav-items" aria-hidden="false">power_settings_new</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menu" class="nav-items">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voicemail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+  <span class="example-fill-remaining-space"></span>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Search" value="">
+  </mat-form-field>
+   <button mat-button class="nav-items"><span class="material-icons">
+       search
+     </span></button>
+</form>
+  <button mat-button [matMenuTriggerFor]="menu" class="nav-items">Welcome Shivam</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voicemail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
+
+  
+  <mat-icon class="nav-items" aria-hidden="false">power_settings_new</mat-icon>
 </mat-toolbar>
-<h1> Welcome to CodeMos</h1>
+<mat-drawer-container class="body-container">
+  <mat-drawer class="example-container" mode="side" opened>
+    <mat-list role="list" class="list">
+      <mat-list-item role="listitem">
+        <span class="example-ripple-container" matRipple [matRippleCentered]="centered"
+          [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+          [matRippleColor]="color" [routerLink]="['/']">
+         <span class="material-icons">
+           home_work
+         </span> Home
+      </span>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <span class="example-ripple-container " matRipple [matRippleCentered]="centered"
+          [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+          [matRippleColor]="color" [routerLink]="['/post']">
+          <span><span class="material-icons">
+            assignment
+          </span> Posts
+            </span>
+      </span>
+      </mat-list-item>
+      <mat-list-item role="listitem"> <span class="example-ripple-container " matRipple [matRippleCentered]="centered"
+          [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+          [matRippleColor]="color">
+          <span class="material-icons">
+            assignment_ind
+          </span> Profile
+        </span></mat-list-item>
+     <mat-list-item role="listitem"> <span class="example-ripple-container " matRipple [matRippleCentered]="centered"
+         [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+         [matRippleColor]="color">
+         Click me
+       </span></mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <mat-drawer-content class="main-container">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
