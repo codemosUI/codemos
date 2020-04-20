@@ -1,61 +1,23 @@
-.example-fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
-     Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
+
+a>img {
+    max-height: 40px;
+    filter: drop-shadow(0px 0px 7px rgba(255, 255, 255, 0.5));
 }
 
-.Menu {
-    display: flex;
-    border-bottom: 1px solid black;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: silver;
-    height: 80px;
-    z-index: 5;
-    top: 0;
-    right: 0;
-    left: 0;
+.search {
+    color: white;
+    font-weight: bold;
 }
 
-.body-container {
-    margin-top: 20px;
+.name {
+    font-weight: bold;
+    color: orangered;
+}
+.active
+{
+    background-color: orangered;
 }
 
-.sidenav-container {
-    width: 20%;
-    background-color: white;
-    height: 100%;
-    /* 100% Full-height */
-    position: fixed;
-    /* Stay in place */
-    /* Stay at the top */
-    left: 0;
-    /* Black*/
-    margin-top: 100px;
-    overflow-x: hidden;
-}
-
-.sidenav-links {
-    text-align: center;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    color: #000;
-    text-decoration: none;
-    font-size: large;
-    border-bottom: 1px solid black;
-}
-
-.main-container {
-    width: 80%;
-    background-color: white;
-}
-
-.nav-items {
-    padding: 5px;
-    margin: 10px;
-}
-
-span>img {
-    max-height: 60px;
+.sidebar{
+    width:100%;
 }
