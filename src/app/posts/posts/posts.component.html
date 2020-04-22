@@ -1,0 +1,146 @@
+
+<div><div class="head">
+    <span class="post-list-header">Post List: </span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-fab color="warn" class="addpost" [routerLink]="['/addpost']">
+      <span class=" material-icons">
+        post_add
+      </span>
+    </button>
+  </div>
+ 
+  <mat-card [class.mat-elevation-z4]=true class="post-card col-12 my-2 ">
+    <div class="post-tags">
+      <mat-chip-list>
+        <mat-chip>#Blogger</mat-chip>
+        <mat-chip>#Fun</mat-chip>
+        <mat-chip>#LGTM</mat-chip>
+      </mat-chip-list>
+    </div>
+    <div class="toolbar border-bottom pt-3 px-3 border-dark">
+      <span class="title-name">Utkarsh Tiwari </span>
+      <span class="example-full-width"></span>
+      <span class="title-time">... posted 23 hour ago</span>
+    </div>
+ 
+    <div class="post-content">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. At possimus ad labore deserunt consequatur ullam molestias
+      sequi quod modi. Esse iusto quibusdam officia soluta quidem laborum nobis sequi est nisi aut dolor, rerum molestias!
+      Enim consequatur magni asperiores nostrum veniam?
+    </div>
+    <mat-toolbar class="post-toolbar">
+      <form class="example-form">
+        <button mat-button class="nav-items"><span class="material-icons">
+            thumb_up_alt
+          </span><span>
+            42
+          </span></button>
+      </form>
+      <form class="example-form">
+        <button mat-button class="nav-items"><span class="material-icons">
+            thumb_down_alt
+          </span><span>
+            12
+          </span>
+        </button>
+      </form>
+      <button mat-button class="nav-items"><span class="material-icons">
+          comment
+        </span>
+        <span>
+          21
+        </span>
+      </button>
+     <span class="example-fill-remaining-space"></span>
+ 
+      <form class="example-form">
+        <button mat-button class="nav-items">
+          <span class="material-icons">
+            flag
+          </span></button>
+      </form>
+    </mat-toolbar>
+  <mat-toolbar class="border-bottom border-dark">
+    <mat-expansion-panel class="example-full-width exp-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title><button mat-button class="nav-items">
+            <span class="material-icons">
+              add_comment
+            </span></button>
+        </mat-panel-title>
+        <mat-panel-description>
+          Add Your Comment here
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="toolbar">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Add Comment</mat-label>
+ 
+          <textarea #comment maxlength="500" matInput rows="3" placeholder="Enter Your Commet here"></textarea>
+          <mat-hint align="end">{{comment.value.length}} / 500</mat-hint>
+        </mat-form-field>
+        <button mat-raised-button class="post-button" color="warn" aria-label="Example icon button with a home icon">
+          <div class="material-icons">
+            add_circle
+          </div><br>
+          POST
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-toolbar>
+ 
+    <div class="comment-section">
+      <div class="comment">
+         <div class="comment-title">
+           <span class="comment-title-name">Shivam Kumar Giri </span>
+            <span class="comment-title-time">... commented 23 hour ago</span>
+            <span class="example-fill-remaining-space"></span>
+            <form class="example-form">
+              <button mat-button class="comment-title-time"><span class="material-icons">
+                  thumb_up_alt
+                </span><span>
+                  34
+                </span></button>
+            </form>
+ 
+            <form class="example-form">
+              <button mat-button class="nav-items">
+                <span class="material-icons">
+                  flag
+                </span></button>
+            </form>
+          </div>
+         <div class="comment-content">
+           Yrr kuch toh accha daalo
+         </div>
+      </div>
+    </div>
+ 
+    <div class="comment-section">
+      <div class="comment">
+        <div class="comment-title">
+          <span class="comment-title-name">Anurag Pandya </span>
+          <span class="comment-title-time">... commented 2 hour ago</span>
+          <span class="example-fill-remaining-space"></span>
+          <form class="example-form">
+            <button mat-button class="comment-title-time"><span class="material-icons">
+                thumb_up_alt
+              </span><span>
+                3
+              </span></button>
+          </form>
+ 
+          <form class="example-form">
+            <button mat-button class="nav-items">
+              <span class="material-icons">
+                flag
+              </span></button>
+          </form>
+        </div>
+        <div class="comment-content">
+          Yrr kuch toh accha daalo
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  </div> 
