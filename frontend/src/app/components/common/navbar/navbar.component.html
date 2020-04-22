@@ -1,65 +1,120 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="nav-items" href='' [routerLink]="['/']"> <img src="/assets/Devshop.gif"> </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      <div class="mx-3 my-1">
-        <span class="search">Welcome:</span><br>
-        <span class="name">Shivam Kumar Giri</span>
-      </div>
-    </div>
-  </nav>
-  
-  <div class="container-fluid">
-    <div class="row flex-xl-nowrap flex-lg-nowrap flex-md-nowrap">
-      <div class="col-md-2 col-xl-2 m-2 col-lg-2 px-0 mx-0 py-0">
-  
-          <div class="d-flex">
-            <nav class="sidebar">
-              <form class="form-inline d-flex mx-3">
-                <mat-form-field>
-                  <input matInput placeholder="Search" class="search" value="">
-                </mat-form-field>
-              </form>
-  
-              <div class="list-group list-group-flush col-12" id="list-tab" role="tablist">
-                <a class="list-group-item d-flex list-group-item-action active text-center"
-                  id="list-home-list" data-toggle="list" href="" role="tab" aria-controls="home" matRipple
-                  [matRippleCentered]="centered" [matRippleColor]="color" [routerLink]="['/']"> <span
-                    class="material-icons">
-                    home_work
-                  </span>  Home</a>
-                <a class="list-group-item d-flex list-group-item-action text-center"
-                  id="list-profile-list" data-toggle="list" href="" role="tab" aria-controls="profile" matRipple
-                  [matRippleCentered]="centered" [matRippleColor]="color" [routerLink]="['/profile']"><span
-                    class="material-icons">
-                    assignment_ind
-                  </span>  Profile</a>
-                <a class="list-group-item d-flex list-group-item-action text-center"
-                  id="list-posts-list" data-toggle="list" href="" role="tab" aria-controls="posts" matRipple
-                  [matRippleCentered]="centered" [matRippleColor]="color" [routerLink]="['/post']"> <span
-                    class="material-icons">
-                    assignment
-                  </span>Posts</a>
-                <a class="list-group-item d-flex list-group-item-action text-center"
-                  id="list-settings-list" data-toggle="list" href="" role="tab" aria-controls="settings" matRipple
-                  [matRippleCentered]="centered" [matRippleColor]="color" [routerLink]="['/post']"><span
-                    class="material-icons">
-                    settings
-                  </span> Settings</a>
-              </div>
-            </nav>
-          </div>
-      </div>
-      <main class="col-md-10  col-lg-10 col-xl-9 mx-0 overflow-hidden">
-        <div class="container">
-          <router-outlet></router-outlet>
-        </div>
-      </main>
+  <a class="nav-items" href="" [routerLink]="['/']">
+    <img src="assets/Devshop.gif" />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    <div class="mx-3 my-1">
+      <span class="search">Welcome:</span><br />
+      <span class="name">Shivam Kumar Giri</span>
     </div>
   </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap flex-lg-nowrap flex-md-nowrap">
+    <div class="col-md-2 col-xl-2 m-2 col-lg-2 px-0 mx-0 py-0">
+      <div class="d-flex">
+        <nav class="sidebar">
+          <form class="form-inline d-flex mx-3">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Search"
+                class="search"
+                value=""
+              /> </mat-form-field
+            >dev
+          </form>
+
+          <div
+            class="list-group list-group-flush col-12"
+            id="list-tab"
+            role="tablist"
+          >
+            <a
+              class="list-group-item d-flex list-group-item-action active text-center"
+              id="list-home-list"
+              data-toggle="list"
+              href=""
+              role="tab"
+              aria-controls="home"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleColor]="color"
+              [routerLink]="['/']"
+            >
+              <span class="material-icons">
+                home_work
+              </span>
+              Home</a
+            >
+            <a
+              class="list-group-item d-flex list-group-item-action text-center"
+              id="list-profile-list"
+              data-toggle="list"
+              href=""
+              role="tab"
+              aria-controls="profile"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleColor]="color"
+              [routerLink]="['/profile']"
+              ><span class="material-icons">
+                assignment_ind
+              </span>
+              Profile</a
+            >
+            <a
+              class="list-group-item d-flex list-group-item-action text-center"
+              id="list-posts-list"
+              data-toggle="list"
+              href=""
+              role="tab"
+              aria-controls="posts"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleColor]="color"
+              [routerLink]="['/post']"
+            >
+              <span class="material-icons"> assignment </span>Posts</a
+            >
+            <a
+              class="list-group-item d-flex list-group-item-action text-center"
+              id="list-settings-list"
+              data-toggle="list"
+              href=""
+              role="tab"
+              aria-controls="settings"
+              matRipple
+              [matRippleCentered]="centered"
+              [matRippleColor]="color"
+              [routerLink]="['/post']"
+              ><span class="material-icons">
+                settings
+              </span>
+              Settings</a
+            >
+          </div>
+        </nav>
+      </div>
+    </div>
+    <main class="col-md-10 col-lg-10 col-xl-9 mx-0 overflow-hidden">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
