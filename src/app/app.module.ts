@@ -54,6 +54,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { TextInputHighlightModule } from 'angular-text-input-highlight';
 import { PostsComponent } from './posts/posts/posts.component';
 import { NavbarComponent } from './common-components/codemos-nav/navbar/navbar.component';
+import { SettingsComponent } from './settings/settings/settings.component';
+import { GamesComponent } from './games/games/games.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { NavbarComponent } from './common-components/codemos-nav/navbar/navbar.c
     ProfileComponent,
     PostsComponent,
     NavbarComponent,
+    SettingsComponent,
+    GamesComponent,
   ],
   imports: [
     BrowserModule,
