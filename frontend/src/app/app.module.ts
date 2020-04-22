@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AddPostComponent } from './posts/add-post/add-post.component';
+import { LoginComponent } from './components/login/login.component';
+import { AddPostComponent } from './components/posts/add-post/add-post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -48,12 +48,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './timeline/home/home.component';
-import { ProfileComponent } from './profile/profile/profile.component';
+import { HomeComponent } from './components/timeline/home/home.component';
+import { ProfileComponent } from './components/profile/profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TextInputHighlightModule } from 'angular-text-input-highlight';
-import { PostsComponent } from './posts/posts/posts.component';
-import { NavbarComponent } from './common-components/codemos-nav/navbar/navbar.component';
+import { PostsComponent } from './components/posts/posts/posts.component';
+import { NavbarComponent } from './components/common/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -118,9 +118,9 @@ import { NavbarComponent } from './common-components/codemos-nav/navbar/navbar.c
     ScrollingModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TextInputHighlightModule
+    TextInputHighlightModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
