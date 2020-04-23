@@ -1,0 +1,9 @@
+.setting-bar {
+    border-top: 1px solid orangered;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}

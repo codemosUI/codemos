@@ -1,5 +1,4 @@
-
- html, body {
+html, body {
     height: 100%;
 }
 
@@ -22,4 +21,28 @@ body {
 
 .mat-form-field-appearance-legacy .mat-form-field-label {
     color: gray !important;
-} 
+}
+
+.mat-input-element {
+    caret-color: orangered !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: orangered;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: orangered!important;
+}
+
+.example-fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.theme-bg {
+    background-color: orangered !important;
+}
+
+.theme-color {
+    color: orangered!important;
+}

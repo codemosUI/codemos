@@ -1,35 +1,31 @@
-<div class="container">
-    <h2 class="heading">Create New Post :</h2>
-    <mat-card class="example-card">
-    
-    <form (ngSubmit)="onPostSubmit()" [formGroup]="postForm">        
-        <mat-form-field appearance="outline" class="postField">  
-            <img mat-card-avatar appGravatar src="http://www.newthinktank.com/wp-content/uploads/2012/05/Gravatar.jpg">          
-            <textarea matInput placeholder="Say something.."
-                formControlName="postBody" [ngModel]="postBody" >
+<h2 class="heading d-flex justify-content-center mx-5">Create New Post :</h2>
+<div class="pl-0 mr-0 pr-0 d-flex justify-content-center mx-3">
+    <mat-card class="width-space w-100 card ml-0 pl-0 mr-0 pr-0">
+        <form (ngSubmit)="onPostSubmit()" [formGroup]="postForm">
+            <mat-form-field appearance="outline" class="postField mx-2 px-4 w-100">
+                <div style="display: subgrid;"><img mat-card-avatar appGravatar
+                        src="http://www.newthinktank.com/wp-content/uploads/2012/05/Gravatar.jpg">
+                    <h3 class="theme-color ml-3">Shivam Kumar Giri</h3>
+                </div>
+                <textarea rows="3" matInput placeholder="Say something.." formControlName="postBody"
+                    [(ngModel)]="postBody">
             </textarea>
-        </mat-form-field>
-
-        <mat-form-field class="chip-list">
-            <mat-chip-list #chipList aria-label="Tag selection">
-                <mat-chip *ngFor="let tagElem of tags" [selectable]="selectable"
-                         [removable]="removable" (removed)="remove(tagElem)">
-                     {{tagElem.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-                <input matInput class= "tagField" placeholder="Add tags.." 
-                       formControlName="tagField" [ngModel]="tagField"
-                       [matChipInputFor]="chipList"
-                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                       [matChipInputAddOnBlur]="addOnBlur"
-                       (matChipInputTokenEnd)="add($event)">
-              </mat-chip-list>
-        </mat-form-field>
-
-        <br/>
-        <button mat-raised-button color="primary" [disabled]="!(isPostAvailable || isTagAvailable)"> Post </button>
-    </form>
-</mat-card>
+            </mat-form-field>
+            <mat-form-field class="chip-list w-100 px-3">
+                <mat-chip-list #chipList aria-label="Tag selection">
+                    <mat-chip *ngFor="let tagElem of tags" [selectable]="selectable" [removable]="removable"
+                        (removed)="remove(tagElem)">
+                        {{tagElem.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input matInput class="tagField" placeholder="Add tags.." formControlName="tagField"
+                        [ngModel]="tagField" [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+            <br />
+            <button class="mx-1" mat-button color="warn" [disabled]="postBody===''"> POST </button>
+        </form>
+    </mat-card>
 </div>
-<br/>
-

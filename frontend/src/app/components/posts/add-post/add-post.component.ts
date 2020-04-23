@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { Post } from '../post';
 import { FormGroup, FormControl } from '@angular/forms';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
 
 export interface Tag {
   name: string;
@@ -22,12 +22,10 @@ export class AddPostComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   tags: Tag[] = [];
   tagField = '';
   postBody = '';
-  isPostAvailable = false;
-  isTagAvailable = false;
   post: Post;
   postForm: FormGroup;
   isItemPosted = false;
@@ -41,12 +39,6 @@ export class AddPostComponent implements OnInit {
       tagField : new FormControl(),
     });
 
-    this.postForm.controls.postBody.valueChanges.subscribe(value => {
-     value === '' ? this.isPostAvailable = false :  this.isPostAvailable = true;
-    });
-    this.postForm.controls.tagField.valueChanges.subscribe(value => {
-      value === '' ? this.isTagAvailable = false :  this.isTagAvailable = true;
-    });
   }
 
   onPostSubmit() {
@@ -68,9 +60,6 @@ export class AddPostComponent implements OnInit {
     const index = this.tags.indexOf(tag);
     if (index >= 0) {
       this.tags.splice(index, 1);
-    }
-    if (this.tags.length === 0) {
-      this.isTagAvailable = false;
     }
   }
 

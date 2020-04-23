@@ -1,26 +1,15 @@
-.container {
-    position : relative;
-    left : 40px; 
-    top:15px;
-    padding : 10px;
-    margin-left : 40px;
-    max-width: 700px;
-    width: 100%;
-}
+
 .postField {
-    top:5px;
-    padding: 10px;
-    width: 100%;
     border: orangered;
 }
-.heading {
-    color: orangered;
-}
-.chip-list {
-    padding: 10px;
-    width: 100%;
+
+img {
+    float: left;
 }
 
 
-
-  
+@media (min-width: 768px) {
+    .width-space {
+        width: 60%;
+    }
+}
