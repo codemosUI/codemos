@@ -1,0 +1,25 @@
+
+ html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: orangered !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: orangered !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-ripple {
+    background-color: orangered !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: gray !important;
+} 
