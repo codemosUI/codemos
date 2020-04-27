@@ -1,11 +1,11 @@
 .container {
     position : relative;
-    left : 40px; 
     top:15px;
     padding : 10px;
-    margin-left : 40px;
-    max-width: 700px;
+    margin-left : 5px;
+    max-width: 1000px;
     width: 100%;
+    
 }
 .postField {
     top:5px;
@@ -15,11 +15,9 @@
 }
 .heading {
     color: orangered;
+    font-size: 15px;
 }
-.chip-list {
-    padding: 10px;
-    width: 100%;
-}
+
 
 
 
