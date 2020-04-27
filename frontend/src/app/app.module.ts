@@ -49,7 +49,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/timeline/home/home.component';
-import { ProfileComponent } from './components/profile/profile/profile.component';
+import { ProfileComponent, ProfileEditDialog } from './components/profile/profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TextInputHighlightModule } from 'angular-text-input-highlight';
 import { PostsComponent } from './components/posts/posts/posts.component';
@@ -62,6 +62,7 @@ import { NavbarComponent } from './components/common/navbar/navbar.component';
     AddPostComponent,
     HomeComponent,
     ProfileComponent,
+    ProfileEditDialog,
     PostsComponent,
     NavbarComponent,
   ],
