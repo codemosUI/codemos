@@ -1,1 +1,62 @@
-<p>Profile Displayed</p>
+<mat-drawer-container class="profile-container">
+    <mat-drawer class="drawer" mode="side" opened>
+        <mat-card class="intro-card">
+            <mat-card-header>
+                <div mat-card-avatar class="profile-image"></div>
+                <div class="profile-id">
+                    <mat-card-title>{{name}}</mat-card-title>
+                    <mat-card-subtitle>utkarshtiwari@google.com</mat-card-subtitle>
+                    <mat-card-actions>
+                        <button mat-raised-button color="warn" (click)="openEditDialog()">
+                            <mat-icon aria-hidden="false" aria-label="Edit icon" class="icon-style">edit</mat-icon>
+                            EDIT PROFILE
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <h3 style="font-weight: bold;">BIOGRAPHY</h3>
+                <p>{{bio}}</p>
+                <mat-divider></mat-divider>
+                <h3 style="font-weight: bold;">DATE OF BIRTH</h3>
+                <p>
+                    {{dob | date: 'dd/MM/yyyy'}}
+                </p>
+                <mat-divider></mat-divider>
+                <h3 style="font-weight: bold;">LOCATION</h3>
+                <p>
+                    {{location}}
+                </p>
+                <mat-divider></mat-divider>
+                <h3 style="font-weight: bold;">CONTACT</h3>
+                <p>
+                    +91- {{contact}}
+                </p>
+                <mat-divider></mat-divider>
+                <h3 style="font-weight: bold;">DATE OF JOIING</h3>
+                <p>
+                    09-09-2019
+                </p>
+                <!-- <mat-divider></mat-divider> -->
+            </mat-card-content>
+        </mat-card>        
+    </mat-drawer>
+    <mat-drawer-content class="content">
+        <mat-card class="skill-card">
+            <mat-card-header>
+                <div mat-card-avatar class="profile-image-short"></div>
+                <mat-card-title>{{name}}</mat-card-title>
+                <mat-card-subtitle>utkarshtiwari@google.com</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <h3 style="font-weight: bold;">BIOGRAPHY</h3>
+                <p>{{bio}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="warn">
+                    Show Full Profile
+                </button>
+            </mat-card-actions>
+        </mat-card>        
+    </mat-drawer-content>
+</mat-drawer-container>
