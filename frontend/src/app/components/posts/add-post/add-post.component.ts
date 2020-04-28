@@ -23,15 +23,16 @@ export class AddPostComponent implements OnInit {
     this.postForm = new FormGroup({
       postBody : new FormControl(),
     });
-    this.postForm.controls.postBody.valueChanges.subscribe(value => {
+
+    this.postForm.get('postBody').valueChanges.subscribe(value => {
      value === '' ? this.isPostAvailable = false :  this.isPostAvailable = true;
     });
   }
 
   onPostSubmit() {
     this.postContent = '';
-    if (this.postForm) {
-      this.postContent = this.postForm.controls.postBody.value;
+    if (this.postForm.get('postBody')) {
+      this.postContent = this.postForm.get('postBody').value;
     }
     this.savePostData();
 
