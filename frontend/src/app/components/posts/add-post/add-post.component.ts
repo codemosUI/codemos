@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { Post } from '../post';
 import { FormGroup, FormControl } from '@angular/forms';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-
-export interface Tag {
-  name: string;
-}
-export interface Post {
-  name: string;
-}
+import { Post } from 'src/app/components/posts/post.model';
+import { PostService } from 'src/app/components/posts/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -19,72 +12,55 @@ export interface Post {
 export class AddPostComponent implements OnInit {
 
   visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  tags: Tag[] = [];
-  tagField = '';
   postBody = '';
   isPostAvailable = false;
-  isTagAvailable = false;
-  post: Post;
   postForm: FormGroup;
-  isItemPosted = false;
+  postContent = '';
 
-  constructor()  { }
+  constructor(private postService: PostService, private route: Router)  { }
 
   ngOnInit(): void {
-
     this.postForm = new FormGroup({
       postBody : new FormControl(),
-      tagField : new FormControl(),
     });
 
-    this.postForm.controls.postBody.valueChanges.subscribe(value => {
+    this.postForm.get('postBody').valueChanges.subscribe(value => {
      value === '' ? this.isPostAvailable = false :  this.isPostAvailable = true;
-    });
-    this.postForm.controls.tagField.valueChanges.subscribe(value => {
-      value === '' ? this.isTagAvailable = false :  this.isTagAvailable = true;
     });
   }
 
   onPostSubmit() {
-    let postContent = '';
-    if (this.postForm) {
-      postContent = this.postForm.controls.postBody.value;
+    this.postContent = '';
+    if (this.postForm.get('postBody')) {
+      this.postContent = this.postForm.get('postBody').value;
     }
-    for (let tag of this.tags) {
-      if (postContent) {
-        postContent = postContent + ' ' + tag.name;
-      } else {
-        postContent = tag.name;
-      }
-    }
-    this.isItemPosted = true;
-  }
+    this.savePostData();
 
-  remove(tag: Tag): void {
-    const index = this.tags.indexOf(tag);
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-    if (this.tags.length === 0) {
-      this.isTagAvailable = false;
+    // Reset form after submitting
+    if (this.postForm.valid) {
+      this.postForm.reset();
+      this.isPostAvailable = false;
     }
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    let value = event.value;
-    if (!value.startsWith('#') && value !== '') {
-      value = '#' + value;
-    }
-    if ((value || '').trim()) {
-      this.tags.push({name: value.trim()});
-    }
-    if (input) {
-      input.value = '';
-    }
+  savePostData() {
+    this.postService.initializeMonthArr();
+    // set post body to be saved:
+    const post: Post = {
+      postId: 12, // To be auto generated
+      userId: 15, // To be auto generated
+      content: this.postContent,
+      dateToDisplay: this.postService.formatCurrDate(new Date()), // Date that will be displayed
+      createdAt: new Date(), // this date will be saved in DB
+      parentId: null,
+      reactionCount: 0
+    };
+    // Add element to the start of the list
+    this.postService.getPosts().unshift(post);
+
+    // Save newly created data to DB
+    // this.postService.savePost(post);
+
   }
+
 }

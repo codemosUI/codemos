@@ -1,35 +1,17 @@
 <div class="container">
-    <h2 class="heading">Create New Post :</h2>
-    <mat-card class="example-card">
+    <h2 class="heading">CREATE POST:</h2>
+    <mat-card [class.mat-elevation-z4] = true class="example-card" >
     
-    <form (ngSubmit)="onPostSubmit()" [formGroup]="postForm">        
+    <form (ngSubmit)="onPostSubmit()" [formGroup]="postForm">   
         <mat-form-field appearance="outline" class="postField">  
             <img mat-card-avatar appGravatar src="http://www.newthinktank.com/wp-content/uploads/2012/05/Gravatar.jpg">          
             <textarea matInput placeholder="Say something.."
                 formControlName="postBody" [ngModel]="postBody" >
             </textarea>
         </mat-form-field>
-
-        <mat-form-field class="chip-list">
-            <mat-chip-list #chipList aria-label="Tag selection">
-                <mat-chip *ngFor="let tagElem of tags" [selectable]="selectable"
-                         [removable]="removable" (removed)="remove(tagElem)">
-                     {{tagElem.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-                <input matInput class= "tagField" placeholder="Add tags.." 
-                       formControlName="tagField" [ngModel]="tagField"
-                       [matChipInputFor]="chipList"
-                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                       [matChipInputAddOnBlur]="addOnBlur"
-                       (matChipInputTokenEnd)="add($event)">
-              </mat-chip-list>
-        </mat-form-field>
-
         <br/>
-        <button mat-raised-button color="primary" [disabled]="!(isPostAvailable || isTagAvailable)"> Post </button>
+        <button mat-raised-button color="warn" [disabled]="!isPostAvailable"> Post </button>
     </form>
 </mat-card>
 </div>
 <br/>
-
