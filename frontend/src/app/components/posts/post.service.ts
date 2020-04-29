@@ -51,4 +51,16 @@ export class PostService {
            + dateToFormat.getHours() + ':' + dateToFormat.getMinutes();
    return dateToDisplay;
   }
+
+  getPostDetail(id: number): Post {
+    // Fetch post from DB or extract from list
+    let post: Post;
+    for (const postElem in this.POSTS) {
+      if (this.POSTS.hasOwnProperty(postElem) &&
+                id === this.POSTS[postElem].postId){
+        post = this.POSTS[postElem];
+      }
+    }
+    return post;
+  }
 }

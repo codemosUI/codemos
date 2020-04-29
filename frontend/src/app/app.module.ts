@@ -54,6 +54,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TextInputHighlightModule } from 'angular-text-input-highlight';
 import { PostsComponent } from './components/posts/posts/posts.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
+import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { NavbarComponent } from './components/common/navbar/navbar.component';
     ProfileEditDialog,
     PostsComponent,
     NavbarComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,

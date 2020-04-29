@@ -1,0 +1,39 @@
+<div>
+    <mat-card [class.mat-elevation-z4] = true class="post-card col-12 my-5 ">
+      <mat-card-header class="header">
+        <img mat-card-avatar appGravatar src="https://www.w3schools.com/howto/img_avatar.png">          
+        <mat-card-title class="mat-card-header-text"> Peter Parker </mat-card-title>	
+        <mat-card-subtitle class="mat-card-subtitle-text"> {{post.dateToDisplay}} </mat-card-subtitle>
+      </mat-card-header>
+    
+      <div class="post-content">
+          {{post.content}}
+      </div>
+
+      <mat-toolbar class="post-toolbar">
+        <form class="example-form">
+          <button mat-button class="nav-items" matTooltip="Like"
+          aria-label="Button that displays a tooltip when focused or hovered over"><span class="material-icons">
+              thumb_up_alt
+            </span><span>
+              {{post.reactionCount}}
+            </span></button>
+        </form>
+
+        <form class="example-form">
+          <button mat-button class="nav-items" matTooltip="Dislike"
+          aria-label="Button that displays a tooltip when focused or hovered over"><span class="material-icons">
+              thumb_down_alt
+            </span><span>
+              0
+            </span>
+          </button>
+        </form>
+      </mat-toolbar>
+    </mat-card>
+</div> 
+<div class="button-elem">
+  <button mat-raised-button color="warn" [routerLink]="['/']">Display List</button>
+</div>
+
+    
