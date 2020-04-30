@@ -13,9 +13,12 @@
   <mat-card-header class="header">
     <img mat-card-avatar appGravatar src="https://www.w3schools.com/howto/img_avatar.png">          
     <mat-card-title class="mat-card-header-text"> Peter Parker </mat-card-title>	
-    <mat-card-subtitle class="mat-card-subtitle-text">  {{post.dateToDisplay}}  </mat-card-subtitle>
+    <mat-card-subtitle class="mat-card-subtitle-text"> 
+      <a routerLink="/post/{{post.postId}}" 
+        style="color:grey"> {{post.dateToDisplay}}  
+      </a>
+    </mat-card-subtitle>  
   </mat-card-header>
-
   <div class="post-content">
       {{post.content}}
   </div>

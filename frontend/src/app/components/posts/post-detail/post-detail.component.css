@@ -1,0 +1,33 @@
+
+.mat-card-header-text {
+    font-size: 16px;
+    color: orangered;
+}
+
+.mat-card-subtitle-text {
+    font-size: 12px;
+    color: grey;
+    padding-left: 15px;
+}
+
+.header {
+    border-bottom: 1px solid darkgray;
+}
+
+.head {
+    display: flex;
+    padding-top: 20px;
+}
+
+.example-full-width {
+    flex: 1 1 auto;
+}
+
+.post-content {
+    padding: 20px;
+    font-size: larges;
+}
+
+.backButton {
+
+}
