@@ -1,3 +1,6 @@
+import java.sql.SQLException;
+import java.io.IOException;
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -11,37 +14,38 @@ public class GoogleDAOAuthImpl {
 
 	String CLIENT_ID = "1013823904187-21ofld8vn99hljc0t7omqhtvrtd6lv9p.apps.googleusercontent.com";
 
-
-	private Object jsonFactory;
+	// will be received from FE Sign IN request
+	String idTokenString;
 	
 	
 	GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(HttpTransport transport, JsonFactory jsonFactory)
 	    // Specify the CLIENT_ID of the app that accesses the backend:
-	    .setAudience(Collections.singletonList(CLIENT_ID))
+	    .setAudience(CLIENT_ID)
 	    .build();
 
-
-	GoogleIdToken idToken = verifier.verify(idTokenString);
-	if (idToken != null) {
-	  Payload payload = idToken.getPayload();
-
-	  // Print user identifier
-	  String userId = payload.getSubject();
-	  System.out.println("User ID: " + userId);
-
-	  // Get profile information from payload
-	  String email = payload.getEmail();
-	  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
-	  String name = (String) payload.get("name");
-	  String avatar = (String) payload.get("picture");
-	  String locale = (String) payload.get("locale");
-	  String familyName = (String) payload.get("family_name");
-	  String givenName = (String) payload.get("given_name");
-
-      // we will insert the data to the database
-
-	} else {
+		try {
+			GoogleIdToken idToken = verifier.verify(idTokenString);
+			if (idToken != null) {
+			  Payload payload = idToken.getPayload();
+		
+			  // Print user identifier
+			  String userId = payload.getSubject();
+		
+			  // Get profile information from payload
+			  String email = payload.getEmail();
+			  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
+			  String name = (String) payload.get("name");
+			  String avatar = (String) payload.get("picture");
+			  String locale = (String) payload.get("locale");
+			  String familyName = (String) payload.get("family_name");
+			  String givenName = (String) payload.get("given_name");
+			// we will insert the data to the database
+	   }
+      else {
 	  System.out.println("Invalid ID token.");
 	}
+  }catch(IOException ioException) {
+	  ioException.printStacktrace();
+  }
 }
 
