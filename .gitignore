@@ -1,30 +1,10 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@anurag091 
-codemosUI
-/
-codemos
-0
-2
-3
- Code Issues 0 Pull requests 3 Actions Projects 0 Wiki Security 0 Insights Settings
-codemos/.gitignore
- sswatisharmaa Committing starter files
-168a882 21 days ago
-46 lines (39 sloc)  631 Bytes
-  
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
 /tmp
 /out-tsc
+
 # Only exists if Bazel was run
 /bazel-out
 
@@ -65,15 +45,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
