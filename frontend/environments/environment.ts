@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiAddress: 'http://localhost:8080',
+  apiAddress: 'http://localhost:8080/codemos/api',
 };
 
 /*
