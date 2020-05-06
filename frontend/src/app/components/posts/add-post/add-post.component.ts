@@ -34,6 +34,9 @@ export class AddPostComponent implements OnInit {
     if (this.postForm.get('postBody')) {
       this.postContent = this.postForm.get('postBody').value;
     }
+    if (this.postContent &&  this.postContent.indexOf('#') !== -1) {
+       this.appendHTMLTagsForHash();
+    }
     this.savePostData();
 
     // Reset form after submitting
@@ -60,7 +63,20 @@ export class AddPostComponent implements OnInit {
 
     // Save newly created data to DB
     // this.postService.savePost(post);
+  }
 
+  appendHTMLTagsForHash() {
+    let finalPostContent = ' ';
+    const arr = this.postContent.split(' ');
+    for (const i in arr) {
+      if (arr.hasOwnProperty(i) && arr[i].startsWith('#')) {
+        finalPostContent = finalPostContent + ' ' + `<a href=` + '"/tags/{{' + arr[i] + `"}}>` + arr[i] + `</a>`;
+      } else {
+        finalPostContent = finalPostContent + ' ' +  arr[i];
+      }
+    }
+    this.postContent = finalPostContent;
   }
 
 }
+
