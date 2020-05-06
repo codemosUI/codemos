@@ -1,24 +1,25 @@
 .container {
-    position : relative;
-    top:15px;
-    padding : 10px;
-    margin-left : 5px;
+    position: relative;
+    top: 15px;
+    padding: 10px;
+    margin-left: 5px;
     max-width: 1000px;
     width: 100%;
-    
 }
+
 .postField {
-    top:5px;
+    top: 5px;
     padding: 10px;
     width: 100%;
     border: orangered;
 }
+
 .heading {
     color: orangered;
     font-size: 15px;
 }
 
-
-
-
-  
+input, textarea {
+    color: transparent;
+    display: inline-block !important;
+}
