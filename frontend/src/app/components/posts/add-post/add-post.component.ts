@@ -13,9 +13,9 @@ export class AddPostComponent implements OnInit {
 
   visible = true;
   postBody = '';
-  isPostAvailable = false;
   postForm: FormGroup;
   postContent = '';
+  divContent ="";
 
   constructor(private postService: PostService, private route: Router)  { }
 
@@ -23,12 +23,33 @@ export class AddPostComponent implements OnInit {
     this.postForm = new FormGroup({
       postBody : new FormControl(),
     });
-
-    this.postForm.get('postBody').valueChanges.subscribe(value => {
-     value === '' ? this.isPostAvailable = false :  this.isPostAvailable = true;
-    });
   }
 
+  divChange()
+  {
+    document.getElementById('divContent').innerHTML="";
+    var content = this.postBody;
+    var res = content.split(" ");
+    console.log(res);
+    for(var i=0;i<res.length;++i)
+    {
+     if(res[i]){ 
+       
+      var newSpan = document.createElement('span');
+      var txt = document.createTextNode(res[i] + " ");
+      newSpan.appendChild(txt);
+    document.getElementById('divContent').appendChild(newSpan);
+     
+    }
+     else{
+         var newSpan = document.createElement('span');
+         newSpan.style.padding = "0px 2px 0px 0px";
+       var txt = document.createTextNode(" ");
+       newSpan.appendChild(txt);
+         document.getElementById('divContent').appendChild(newSpan);
+  }
+  }
+}
   onPostSubmit() {
     this.postContent = '';
     if (this.postForm.get('postBody')) {
@@ -39,7 +60,6 @@ export class AddPostComponent implements OnInit {
     // Reset form after submitting
     if (this.postForm.valid) {
       this.postForm.reset();
-      this.isPostAvailable = false;
     }
   }
 

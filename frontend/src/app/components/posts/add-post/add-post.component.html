@@ -5,12 +5,14 @@
     <form (ngSubmit)="onPostSubmit()" [formGroup]="postForm">   
         <mat-form-field appearance="outline" class="postField">  
             <img mat-card-avatar appGravatar src="http://www.newthinktank.com/wp-content/uploads/2012/05/Gravatar.jpg">          
-            <textarea matInput placeholder="Say something.."
-                formControlName="postBody" [ngModel]="postBody" >
+             <div id="divContent" style="position:absolute;z-index:2;"></div>
+            <textarea matInput placeholder="Say something.." (keyup)="divChange()"
+                formControlName="postBody" [(ngModel)]="postBody" maxlength="500">
             </textarea>
+            <mat-hint align="end">{{postBody.length}} / 500</mat-hint>
         </mat-form-field>
         <br/>
-        <button mat-raised-button color="warn" [disabled]="!isPostAvailable"> Post </button>
+        <button mat-raised-button color="warn" [disabled]="postBody===''"> Post </button>
     </form>
 </mat-card>
 </div>
