@@ -26,45 +26,35 @@ public class MessageDAOImpl implements MessageDao {
 	@Override
 	public Response createMessage(int userId, Message message) {
 		message.setUserId(userId);
+		boolean isUserExist = false;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		StatusMessage statusMessage = null;
 		int autoID = -1;
+		int numberRow = 0;
 
-		String sql = "insert into t_post (userId, content, createdAt, "
-				+ "parentId, postcol, reaction_count, like_count) values (?,?,?,?,?,?,?)";
+		String sqlUserCheck = "select userId,count(*) from t_user where userId = ?";
 
 		try {
 			conn = datasource.getConnection();
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, message.getUserId());
-			ps.setString(2, message.getContent());
-			ps.setTimestamp(3, message.getCreatedAt());
-			ps.setInt(4, message.getParentId());
-			ps.setString(5, message.getPostcol());
-			ps.setInt(6, message.getReactionCount());
-			ps.setInt(7, message.getLikeCount());
-
-			int rows = ps.executeUpdate();
-
-			if (rows == 0) {
+			ps = conn.prepareStatement(sqlUserCheck);
+			ps.setInt(1, userId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				numberRow = rs.getInt("count(*)");
+			}
+			if (numberRow == 0) {
+				isUserExist = false;
 				logger.error("Unable to create Message...");
 				statusMessage = new StatusMessage();
 				statusMessage.setStatus(Status.NOT_FOUND.getStatusCode());
-				statusMessage.setMessage("Unable to create customer...");
+				statusMessage.setMessage("user id is not found");
 				return Response.status(404).entity(statusMessage).build();
+			} else {
+				isUserExist = true;
 			}
-
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select LAST_INSERT_ID()");
-
-			if (rs.next()) {
-				autoID = rs.getInt(1);
-				message.setPostId(autoID);
-			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -93,11 +83,72 @@ public class MessageDAOImpl implements MessageDao {
 				}
 			}
 		}
+		if (isUserExist) {
+			String sql = "insert into t_post (userId, content, createdAt, "
+					+ "parentId, postcol, reaction_count, like_count) values (?,?,?,?,?,?,?)";
+			try {
+				conn = datasource.getConnection();
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, message.getUserId());
+				ps.setString(2, message.getContent());
+				ps.setTimestamp(3, message.getCreatedAt());
+				ps.setInt(4, message.getParentId());
+				ps.setString(5, message.getPostcol());
+				ps.setInt(6, message.getReactionCount());
+				ps.setInt(7, message.getLikeCount());
+
+				int rows = ps.executeUpdate();
+
+				if (rows == 0) {
+					logger.error("Unable to create Message...");
+					statusMessage = new StatusMessage();
+					statusMessage.setStatus(Status.NOT_FOUND.getStatusCode());
+					statusMessage.setMessage("Unable to create customer...");
+					return Response.status(404).entity(statusMessage).build();
+				}
+
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("select LAST_INSERT_ID()");
+
+				if (rs.next()) {
+					autoID = rs.getInt(1);
+					message.setPostId(autoID);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						logger.error("Error closing resultset: " + e.getMessage());
+						e.printStackTrace();
+					}
+				}
+				if (ps != null) {
+					try {
+						ps.close();
+					} catch (SQLException e) {
+						logger.error("Error closing PreparedStatement: " + e.getMessage());
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						logger.error("Error closing connection: " + e.getMessage());
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 		return Response.status(200).entity(message).build();
 	}
 
 	@Override
-	public Response getMessage(int id) {
+	public Response getMessage(int id, int messageId) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -105,11 +156,12 @@ public class MessageDAOImpl implements MessageDao {
 		Message message = null;
 
 		String sql = "select postId, userId, content, createdAt, "
-				+ "parentId, postcol, reaction_count, like_count from t_post where postId = ?";
+				+ "parentId, postcol, reaction_count, like_count from t_post where userId = ? AND postId = ?";
 		try {
 			conn = datasource.getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
+			ps.setInt(2, messageId);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {

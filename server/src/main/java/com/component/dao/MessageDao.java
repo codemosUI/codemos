@@ -6,6 +6,6 @@ import com.component.model.Message;
 
 public interface MessageDao {
 	public Response createMessage(int userId, Message message);
-	public Response getMessage(int id);
+	public Response getMessage(int id,int messageId);
 	public Response getAllMessages(int userId);
 }

@@ -1,0 +1,14 @@
+com\component\resources\MessageResource.class
+com\component\dao\impl\ReactionDAOImpl.class
+com\component\resources\ReactionResource.class
+com\component\util\Database.class
+com\component\model\User.class
+com\component\dao\impl\UserDAOImpl.class
+com\component\dao\UserDao.class
+com\component\model\StatusMessage.class
+com\component\resources\UserResource.class
+com\component\dao\MessageDao.class
+com\component\model\Message.class
+com\component\dao\ReactionDao.class
+com\component\model\Reaction.class
+com\component\dao\impl\MessageDAOImpl.class
