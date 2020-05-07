@@ -31,11 +31,20 @@ private Logger logger = Logger.getLogger(ReactionResource.class);
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createReaction(@PathParam("postId") int postId, Reaction reaction) {
 		ReactionDao daoImpl = new ReactionDAOImpl();
-		logger.info("Inside createReaction...");
+		
 		Response resp = daoImpl.createReaction(postId, reaction);
 		return resp;
 	}
-	
+	@GET
+	@Path("/{postId}/reaction/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response showReaction(@PathParam("postId") int postId, @PathParam("id") int id) throws JsonGenerationException,
+		JsonMappingException, IOException {
+		ReactionDao daoImpl = new ReactionDAOImpl();
+		logger.info("Inside showReaction...");
+		Response resp = daoImpl.getReaction(postId, id);
+		return resp;
+	}
 	@GET
 	@Path("/{postId}/reaction")
 	@Produces(MediaType.APPLICATION_JSON)

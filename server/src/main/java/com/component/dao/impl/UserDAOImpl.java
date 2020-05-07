@@ -1,5 +1,6 @@
 package com.component.dao.impl;
 
+import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,20 +8,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.sql.DataSource;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
 import org.apache.log4j.Logger;
-
 import com.component.dao.UserDao;
-import com.component.model.Message;
 import com.component.model.StatusMessage;
 import com.component.model.User;
 import com.component.util.Database;
 
+
 public class UserDAOImpl implements UserDao{
+	
 	private DataSource datasource = Database.getDataSource();
 	private Logger logger = Logger.getLogger(UserDAOImpl.class);
 	

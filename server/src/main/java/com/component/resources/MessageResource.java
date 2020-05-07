@@ -33,7 +33,16 @@ public class MessageResource {
 		Response resp = daoImpl.createMessage(userId, message);
 		return resp;
 	}
-	
+	@GET
+	@Path("/{messageId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response showMessage(@PathParam("userId") int userId, @PathParam("messageId") int messageId) throws JsonGenerationException,
+		JsonMappingException, IOException {
+		MessageDAOImpl daoImpl = new MessageDAOImpl();
+		logger.info("Inside showMessage...");
+		Response resp = daoImpl.getMessage(userId, messageId);
+		return resp;
+	}
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response showAllMessages(@PathParam("userId") int userId) throws JsonGenerationException,

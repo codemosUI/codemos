@@ -18,27 +18,77 @@ import com.component.model.StatusMessage;
 import com.component.util.Database;
 
 public class ReactionDAOImpl implements ReactionDao {
-	
+
 	private DataSource datasource = Database.getDataSource();
 	private Logger logger = Logger.getLogger(ReactionDAOImpl.class);
 
 	@Override
 	public Response createReaction(int postId, Reaction reaction) {
 		reaction.setPostId(postId);
+		boolean isPostIdExist = false;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		StatusMessage statusMessage = null;
 		int autoID = -1;
+		int numberRow = 0;
+		String sqlPostIdCheck = "select postId,count(*) from t_post where postId=?";
 
+		try {
+			conn = datasource.getConnection();
+			ps = conn.prepareStatement(sqlPostIdCheck);
+			ps.setInt(1, postId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				numberRow = rs.getInt("count(*)");
+			}
+			if (numberRow == 0) {
+				isPostIdExist = false;
+				logger.error("post id is not found");
+				statusMessage = new StatusMessage();
+				statusMessage.setStatus(Status.NOT_FOUND.getStatusCode());
+				statusMessage.setMessage("post id is not found");
+				return Response.status(404).entity(statusMessage).build();
+			} else {
+				isPostIdExist = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					logger.error("Error closing resultset: " + e.getMessage());
+					e.printStackTrace();
+				}
+			}
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					logger.error("Error closing PreparedStatement: " + e.getMessage());
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					logger.error("Error closing connection: " + e.getMessage());
+					e.printStackTrace();
+				}
+			}
+		}
+		if(isPostIdExist) {
 		String sql = "insert into t_reaction (userId, postId, type) values (?,?,?)";
 
 		try {
-			
+
 			conn = datasource.getConnection();
 			ps = conn.prepareStatement(sql);
-			
+
 			ps.setInt(1, reaction.getUserId());
 			ps.setInt(2, reaction.getPostId());
 			ps.setInt(3, reaction.getType());
@@ -87,20 +137,22 @@ public class ReactionDAOImpl implements ReactionDao {
 				}
 			}
 		}
+		}
 		return Response.status(200).entity(reaction).build();
 	}
 
 	@Override
-	public Response getReaction(int id) {
+	public Response getReaction(int postId, int id) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Reaction reaction = null;
-		String sql = "select id, userId, postId, type from t_reaction where id = ?";
+		String sql = "select id, userId, postId, type from t_reaction where postId = ? AND id = ?";
 		try {
 			conn = datasource.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setInt(1, postId);
+			ps.setInt(2, id);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -157,10 +209,11 @@ public class ReactionDAOImpl implements ReactionDao {
 
 		List<Reaction> allReactions = new ArrayList<Reaction>();
 
-		String sql = "select id, userId, postId, type from t_reaction";
+		String sql = "select id, userId, postId, type from t_reaction where postId = ?";
 		try {
 			conn = datasource.getConnection();
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, postId);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -170,14 +223,14 @@ public class ReactionDAOImpl implements ReactionDao {
 				reaction.setUserId(rs.getInt("userId"));
 				reaction.setPostId(rs.getInt("postId"));
 				reaction.setType(rs.getInt("type"));
-
+				allReactions.add(reaction);
 			}
 
 			if (allReactions.isEmpty()) {
-				logger.error("No Reaction Exists...");
+				logger.error("No Reactions Exists...");
 				StatusMessage statusMessage = new StatusMessage();
 				statusMessage.setStatus(Status.NOT_FOUND.getStatusCode());
-				statusMessage.setMessage("No Reaction Exists...");
+				statusMessage.setMessage("No Reactions Exists...");
 				return Response.status(404).entity(statusMessage).build();
 			}
 		} catch (SQLException e) {
