@@ -55,6 +55,7 @@ import { TextInputHighlightModule } from 'angular-text-input-highlight';
 import { PostsComponent } from './components/posts/posts/posts.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
+import { AuthorizeComponent } from './components/authorize/authorize.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PostDetailComponent } from './components/posts/post-detail/post-detail.
     PostsComponent,
     NavbarComponent,
     PostDetailComponent,
+    AuthorizeComponent,
   ],
   imports: [
     BrowserModule,

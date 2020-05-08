@@ -1,5 +1,5 @@
-<mat-drawer-container class="profile-container">
-    <mat-drawer class="drawer" mode="side" opened>
+<mat-sidenav-container class="profile-container">
+    <mat-sidenav class="drawer" #sidenav mode="push">
         <mat-card class="intro-card">
             <mat-card-header>
                 <div mat-card-avatar class="profile-image"></div>
@@ -37,26 +37,36 @@
                 <p>
                     09-09-2019
                 </p>
-                <!-- <mat-divider></mat-divider> -->
             </mat-card-content>
         </mat-card>        
-    </mat-drawer>
-    <mat-drawer-content class="content">
-        <mat-card class="skill-card">
-            <mat-card-header>
-                <div mat-card-avatar class="profile-image-short"></div>
-                <mat-card-title>{{name}}</mat-card-title>
-                <mat-card-subtitle>utkarshtiwari@google.com</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <h3 style="font-weight: bold;">BIOGRAPHY</h3>
-                <p>{{bio}}</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="warn">
-                    Show Full Profile
-                </button>
-            </mat-card-actions>
-        </mat-card>        
-    </mat-drawer-content>
-</mat-drawer-container>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <div class="container">
+            <br>
+            <h2 class="heading">PROFILE:</h2>
+            <mat-card class="skill-card" [class.mat-elevation-z4] = true>
+                <mat-card-header>
+                    <div mat-card-avatar class="profile-image-short"></div>
+                    <mat-card-title>{{name}}</mat-card-title>
+                    <mat-card-subtitle>utkarshtiwari@google.com</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <h3 style="font-weight: bold;">BIOGRAPHY</h3>
+                    <p>{{bio}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="warn" (click)="sidenav.toggle()">
+                        Show Full Profile
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            <br>
+            <h2 class="heading">POST LIST:</h2>
+            <mat-card class="skill-card" [class.mat-elevation-z4] = true>
+                <mat-card-content>    
+                    <p>Post list can be added</p>
+                </mat-card-content>
+            </mat-card>
+        </div>       
+    </mat-sidenav-content>
+</mat-sidenav-container>

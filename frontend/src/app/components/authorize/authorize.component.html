@@ -1,0 +1,22 @@
+<div class="body_container">
+    <div class="container authorize_container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <mat-card class="intro-card" [class.mat-elevation-z4] = true>
+                    <div class="row justify-content-center">
+                        <div mat-card-title class="profile-image justify-content-center">Welcome to CodeMos</div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <mat-card-content>
+                            <button mat-raised-button color="warn" (click)="onAuthorize()">
+                                <mat-icon aria-hidden="false" aria-label="Edit icon" class="icon-style">input</mat-icon>
+                                Authorize with Google
+                            </button>
+                        </mat-card-content>
+                    </div>
+                </mat-card>  
+            </div>
+        </div>
+    </div>
+</div>
