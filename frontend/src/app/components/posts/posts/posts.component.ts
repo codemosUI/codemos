@@ -9,13 +9,17 @@ import { PostService } from 'src/app/components/posts/post.service';
  })
  export class PostsComponent implements OnInit {
    posts: Post[];
+   contentToRender = '';
    // tags: string[];
    // selectable = true;
-
    constructor(private postService: PostService) {
       this.posts = postService.getPosts();
 
    }
    ngOnInit(): void {}
 
+   renderPostContent(content: string) {
+    this.contentToRender = content;
+    return this.contentToRender;
+   }
  }

@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'post/:postId', component: PostDetailComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'addpost', component: AddPostComponent },
+  { path: 'tags/:tagId', component: PostsComponent },
 ];
 
 @NgModule({

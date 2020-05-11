@@ -19,9 +19,7 @@
       </a>
     </mat-card-subtitle>  
   </mat-card-header>
-  <div class="post-content">
-      {{post.content}}
-  </div>
+  <div class="post-content" [innerHTML] = "renderPostContent(post.content)"></div>
   <mat-toolbar class="post-toolbar">
     <form class="example-form">
       <button mat-button class="nav-items" matTooltip="Like"
