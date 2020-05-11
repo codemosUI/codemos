@@ -1,17 +1,19 @@
 <div class="container">
-    <h2 class="heading">CREATE POST:</h2>
+    <div class="heading"><b>CREATE POST:</b></div>
+    <br/>
     <mat-card [class.mat-elevation-z4] = true class="example-card" >
     
     <form (ngSubmit)="onPostSubmit()" [formGroup]="postForm">   
         <mat-form-field appearance="outline" class="postField">  
             <img mat-card-avatar appGravatar src="http://www.newthinktank.com/wp-content/uploads/2012/05/Gravatar.jpg">          
-            <textarea matInput placeholder="Say something.."
-                formControlName="postBody" [ngModel]="postBody" >
-            </textarea>
+            <div id="divContent" style="position:absolute;z-index:2;"></div>
+             <textarea matInput matTextareaAutosize placeholder="Say something.." 
+                    (keyup)="postInput($event)" formControlName="postBody" [(ngModel)]="postBody">
+             </textarea>
         </mat-form-field>
         <br/>
         <button mat-raised-button color="warn" [disabled]="!isPostAvailable"> Post </button>
     </form>
 </mat-card>
-</div>
+</div> 
 <br/>
