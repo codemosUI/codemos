@@ -1,0 +1,61 @@
+<br>
+<h2 class="heading">LEAVE CALENDAR:</h2>
+<mwl-calendar-header [(view)]="view" [(viewDate)]="viewDate">
+</mwl-calendar-header>
+<div class="alert alert-info">
+  <div [ngSwitch]="view">
+    <span *ngSwitchCase="'month'">Click on a month label to change the view to that month.</span>
+    <span *ngSwitchCase="'week'"
+      >Click on a day header to change the view to that day.</span
+    >
+    <span *ngSwitchCase="'day'">There is no other view to navigate to.</span>
+  </div>
+</div>
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (dayClicked)="dayClicked($event.day)"
+  >
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events"
+    (dayHeaderClicked)="changeDay($event.day.date)"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events"
+  >
+  </mwl-calendar-day-view>
+</div>
+
+
+<ng-template #modalContent let-close="close">
+    <div class="modal-header">
+      <h2 class="modal-title">Leave Description</h2>
+    </div>
+    <div class="modal-body">
+      <div>
+        Title:
+        <pre>{{ modalData?.event.title }}</pre>
+      </div>
+      <div>
+        Description:
+        <pre>{{ modalData?.event | json }}</pre>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="close()">
+        OK
+      </button>
+    </div>
+</ng-template>
