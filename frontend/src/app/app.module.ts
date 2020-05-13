@@ -56,6 +56,11 @@ import { PostsComponent } from './components/posts/posts/posts.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
 import { AuthorizeComponent } from './components/authorize/authorize.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarHeaderModule } from './components/calendar/calendar-header/calendar-header.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -69,6 +74,7 @@ import { AuthorizeComponent } from './components/authorize/authorize.component';
     NavbarComponent,
     PostDetailComponent,
     AuthorizeComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,6 +130,12 @@ import { AuthorizeComponent } from './components/authorize/authorize.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     TextInputHighlightModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    CalendarHeaderModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

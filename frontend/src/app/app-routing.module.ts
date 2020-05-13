@@ -7,6 +7,7 @@ import { HomeComponent } from './components/timeline/home/home.component';
 import { PostDetailComponent } from './components/posts/post-detail/post-detail.component';
 import { AuthorizeComponent } from './components/authorize/authorize.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 const routes: Routes = [
   {path: '', component: AuthorizeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'post/:postId', component: PostDetailComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'addpost', component: AddPostComponent },
+    {path: 'calendar', component: CalendarComponent},
   ]}, 
 ];
 
